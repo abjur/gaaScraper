@@ -1,0 +1,78 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# gaaScraper
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+O objetivo do pacote `gaaScraper` é facilitar a coleta de dados do site
+dos GAAs (Grupos de Apoio à Adoção) de todo o Brasil.
+
+## Instalação
+
+Você pode instalar a versão de desenvolvimento do `gaaScraper` do
+[GitHub](https://github.com/abjur/gaaScraper) com:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("abjur/gaaScraper")
+```
+
+## Dados
+
+A parte importante do pacote são os dados organizados:
+
+``` r
+dplyr::glimpse(gaaScraper::da_gaas)
+```
+
+Rows: 202 Columns: 23 $ id <int> 1, 42, 5, 11, 5, 7, 2, 12, 2, 10, 6, 7,
+48, 10, 11, 5, 1, 1, 2, 4, … $ link <chr>
+“<https://www.angaad.org.br/portal/acalanto-rondonia/>”,
+“<https://www>… $ img\_link
+<chr>”<https://www.angaad.org.br/portal/wp-content/uploads/2018/06/GAAS-D>…
+$ title <chr> “GAA Acalanto Rondônia”, “GAA Acolher”, “ADOTE E AME –
+Grupo de Apo… $ city <chr>”Porto Velho“,”São Paulo“,”Duque de
+Caxias“,”Rio das Ostras“,”C… $ uf <chr> “RO”, “SP”, “RJ”, “RJ”,
+“RS”, “MS”, “MT”, “RJ”, “BA”, “RJ”, “RJ”, “… $ ibge
+<chr>”1100205“,”3550308“,”3301702“,”3304524“,”4304630“,”5007901“,”…
+$ file <chr> “data-raw/gaas/acalanto-rondonia.html”,
+“data-raw/gaas/acolhersp.ht… $ cep <chr>”76803-778“,”04647-010“,
+NA,”28893-076“,”95555-000“, NA,”78.058… $ cnpj <chr> NA,
+“04.823.726/0001-85”, NA, NA, NA, NA, “10.718.071/0001-88”, NA,… $
+contato <chr> “Cristiane Zemuner”, “Cecília Zelic”, NA, “Dora”, “Karina
+Meneghett… $ data\_de\_fundacao <chr>”14/05/2016“,”13/05/1999“,
+NA,”01/05/2007“, NA, NA,”05/03/2009“,… $ e\_mail
+<chr>”<cristianezemuner@gmail.com>“,”<contato@acolhergaad.org.br>“,
+NA, NA,… $ endereco <chr>”R. Pio XII, 2240 – São João Bosco – Porto
+Velho/RO“,”Rua Jacatirã… $ facebook <chr> “Acalanto Rondônia”, “Acolher
+Grupo de Apoio à Adoção”, NA, “Facebo… $ instagram <chr>
+NA,”@acolhergaad“, NA, NA,”@adottaregrupodeapoio“, NA,”@amparacu… $
+nome <chr> “Grupo de Apoio à Adoção Acalanto Rondônia”, “Acolher Grupo
+de Apoi… $ reunioes <chr>”Por enquanto somente whatsapp. Logo voltaremos
+com a reunião prese… $ sigla <chr> “Acalanto Rondônia”, “Acolher”, NA,
+“ADOTE”, “Adottare”, “AFAGAS”, … $ site <chr> NA, “Acolher Grupo de
+Apoio à Adoção”, NA, NA, NA, “www.afagas.org.… $ telefone <chr>”(69)
+99343 8606“,”(11) 97682-3754“, NA, NA,”(51) 98137-9365“,”(… $ youtube
+<chr> NA, “Acolher Grupo de Apoio à Adoção SP”, NA, NA, NA, NA, NA, NA,
+“… $ txt\_completo <chr>”.845: Grupo de Apoio à Adoção … \`\`\`
+
+As informações id, link, img\_link, title, city, uf, ibge, são extraídas
+da [página inicial do site](https://www.angaad.org.br/portal/gaas/). As
+demais informações são extraídas da página de cada GAA. O código IBGE é
+extraído utilizando-se o pacote
+[`munifacil`](https://github.com/curso-r/munifacil).
+
+As informações dos GAAS não são muito consistentes, já que a estrutura
+da página pode variar. Por isso, adicionamos uma coluna `txt_completo`
+com o texto completo da página, para que você possa fazer a extração de
+informações que não estão no pacote.
+
+A base bruta dos GAAS, em formato `.rds`, foram adicionados nos Releases
+do repositório. Os arquivos HTML também foram adicionados nos Releases.
+
+## Licença
+
+MIT
