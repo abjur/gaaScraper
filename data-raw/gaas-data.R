@@ -81,6 +81,8 @@ aux_gaas <- purrr::map(files, gaa_parse, .progress = TRUE) |>
   tidyr::pivot_wider(names_from = key, values_from = value) |>
   janitor::clean_names()
 
+readr::write_rds(aux_gaas, "data-raw/aux_gaas.rds")
+
 # Parse ----
 # Essa parte pode ser melhorada posteriormente
 
@@ -108,3 +110,10 @@ da_gaas <- aux_gaas |>
   dplyr::select(id:ibge, file:txt_completo)
 
 usethis::use_data(da_gaas, overwrite = TRUE)
+
+## upload to releases
+
+# piggyback::pb_new_release(tag = "raw-data")
+# piggyback::pb_upload("data-raw/gaas.zip", tag = "raw-data")
+# piggyback::pb_upload("data-raw/aux_gaas.rds", tag = "raw-data")
+
