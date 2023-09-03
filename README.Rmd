@@ -36,6 +36,8 @@ A parte importante do pacote são os dados organizados:
 ```r
 dplyr::glimpse(gaaScraper::da_gaas)
 ```
+
+```
 Rows: 202
 Columns: 23
 $ id               <int> 1, 42, 5, 11, 5, 7, 2, 12, 2, 10, 6, 7, 48, 10, 11, 5, 1, 1, 2, 4, …
